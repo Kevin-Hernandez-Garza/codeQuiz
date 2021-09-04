@@ -19,7 +19,6 @@ h1 {
     border-radius: 5px;
     border-width: 1px;
     box-shadow: rgb(0 0 0 / 15%) 0px 2px 8px 0px;
-    color: hsl(206, 17%, 28%);
     font-size: 18px;
     margin: 0 auto;
     max-width: 800px;
@@ -51,7 +50,7 @@ button {
 }
 
 button:hover {
-    background-color: forestgreen;
-    border: 1px solid whitesmoke;
+    background-color: #3CB371;
+    border: 1px solid #fff;
 }
 /* button end */
