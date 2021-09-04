@@ -1,0 +1,52 @@
+body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    text-align: center;
+    background-color: darkseagreen;
+}
+
+
+/* heading */
+h1 {
+    border-bottom: 3px solid black;
+    width: 50%;
+    margin: auto;
+    text-shadow: 1px 1px 5px darkolivegreen;
+}
+
+/* main content */
+.main-content {
+    width: 70%;
+    margin: auto;
+    padding: 50px 100px;
+}
+
+/* header */
+.quizHead {
+    font-size: 25px;
+}
+
+/* instructions */
+.quizInst {
+    font-size: 20px;
+}
+
+/* button */
+button {
+    border: none;
+    background-color: #556B2F;
+    border-radius: 25px;
+    color: hsl(0, 0%, 100%);
+    /* display: inline-block; */
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: forestgreen;
+    border: 1px solid whitesmoke;
+}
+/* button end */
