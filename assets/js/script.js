@@ -10,10 +10,10 @@ function countdown() {
             timerEl.textContent = "Time Remaining: " + timeLeft;
             timeLeft--;
         } else {
-            timerEl.textContent = "Game Over";
+            timerEl.textContent = "GAME OVER !!!";
             clearInterval(timeInterval);
         }
-    }, 1000);
+    }, 1000); // in milliseconds which equals every second
 }
 
 startBtn.onclick = countdown;
