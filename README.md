@@ -6,8 +6,10 @@
 
 ## Screenshot
 
+![mockup](assets/images/codeQuiz-mock.png)
+
 ## Website
 
-* 
+* https://kevin-hernandez-garza.github.io/codeQuiz/
 
 ### Made with 💜 by Kevin Hernandez
