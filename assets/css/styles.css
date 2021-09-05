@@ -26,13 +26,13 @@ h1 {
 }
 
 /* header */
-.quizHead {
+#quizHead {
     font-size: 25px;
     border-bottom: 1px solid black;
 }
 
 /* instructions */
-.quizInst {
+#quizInst {
     font-size: 20px;
 }
 
