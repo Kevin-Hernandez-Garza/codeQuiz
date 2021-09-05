@@ -23,44 +23,44 @@ var questions = [
         correct: "<script src='xxx.js'>"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How do you write 'Hello World!' in a alert box?",
+        a: ["alertBox('Hello World!');", "msg('Hello World!');", "msgBox('Hello World!');", "alert('Hello World!');"],
+        correct: "alert('Hello World!');"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How do you create a function in JavaScript?",
+        a: ["function myFunction()", "function = myFunction()", "function: myFunction()", "$function myFunction()"],
+        correct: "function myFunction()"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How do you write an if statement in JavaScript?",
+        a: ["if i == 5 then", "if i = 5", "if (i == 5)", "if i = 5 then"],
+        correct: "if (i == 5)"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How to write an IF statement fir executing some code if 'i' is NOT equal to 5?",
+        a: ["if (i <> 5)", "if i <> 5", "if (i != 5)", "if i != 5 then"],
+        correct: "if (i != 5)"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How does a while loop start?",
+        a: ["while (i <= 18)", "while (i <= 18; i++)", "while (i, 18 > .length)", "while i = 1 to 10"],
+        correct: "while (i <= 18)"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How do you round the number 7.25 to the nearest integer?",
+        a: ["Math.rnd(7.25)", "Math.round(7.25)", "round(7.25)", "rnd(7.25)"],
+        correct: "Math.round(7.25)"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "How do you find the number with the highest value of x and y?",
+        a: ["Math.ceil(x,y)", "ceil(x,y)", "top(x,y)", "Math.max(x,y)"],
+        correct: "Math.max(x,y)"
     },
     {
-        q: "",
-        a: ["", "", "", ""],
-        correct: ""
+        q: "Which event occurs when the user clicks on an HTML element?",
+        a: ["onMouseOver", "onclick", "onchange", "onMouseClick"],
+        correct: "onclick"
     }
 ];
 
