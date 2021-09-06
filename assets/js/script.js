@@ -1,16 +1,4 @@
-// timer countdown function once user clicks start button
-var timerEl = document.getElementById("timer");
-var startBtn = document.getElementById("startBtn");
-
-// quiz id's
-var quizQ = document.getElementById("question-toQuiz");
-var opt1 = document.getElementById("option1");
-var opt2 = document.getElementById("option2");
-var opt3 = document.getElementById("option3");
-var opt4 = document.getElementById("option4");
-
-
-// questions, options, and answer contained in a array with objects
+// questions, options, and answer contained in a array of objects
 var questions = [
     {
         q: "Inside which HTML element do we put the JavaScript?",
@@ -64,66 +52,138 @@ var questions = [
     }
 ];
 
+// targeting certain ID's from HTML file
+var timerEl = document.getElementById("timer");
+var startBtn = document.getElementById("startBtn");
+var quizInst = document.getElementById("quizInst");
+var quizStart = document.getElementById("quiz-questions");
+var results = document.getElementById("results");
+var highScore = document.getElementById("scores");
+var userName = document.getElementById("initials");
+var userHighName = document.getElementById("user-name");
+var userHighScore = document.getElementById("user-score");
+var scoreSubmitBtn = document.getElementById("highscore");
+
+
+// quiz id's
+var quizQ = document.getElementById("question-toQuiz");
+var option1 = document.getElementById("option1");
+var option2 = document.getElementById("option2");
+var option3 = document.getElementById("option3");
+var option4 = document.getElementById("option4");
+
+var score = 0;
+var testQuestions = 0;
+
+// hiding the quiz and result elements initially
+results.style.display = "none";
+quizStart.style.display = "none";
+highScore.style.display = "none";
+
 
 // timer function
+var timeLeft = 100;
 function countdown() {
-    var timeLeft = 100;
+    testQuestions = 0;
+    timeLeft = 100;
+
+    document.getElementById("quizInst").style.display = "none"; // gets rid of the instructions
+    document.getElementById("startBtn").style.display = "none"; // here we are hiding the startBtn
+    document.getElementById("quizHead").style.display = "none"; // hide code quiz heading
+    document.getElementById("quiz-questions").style.display = "block"; //display quiz
 
     var timeInterval = setInterval(function () {
-        if (timeLeft > 0) {
-            timerEl.textContent = "Time Remaining: " + timeLeft;
-            timeLeft--;
-        } else {
-            timerEl.textContent = "GAME OVER !!!"; // create a game over function once user runs out of time or questions
+        timeLeft--;
+        timerEl.textContent = "Time Remaining: " + timeLeft;
+        if (timeLeft <= 0) {
             clearInterval(timeInterval);
+            timerEl.textContent = "GAME OVER !!!"; // create a game over function once user runs out of time or questions
+
+            if (testQuestions < questions.length - 1) {
+                gameOver();
+            }
         }
     }, 1000); // milliseconds which equals every second
 
+    startQuiz(); //initiates the quiz
+};
 
-    document.getElementById("quizInst").style.display = "none"; // gets rid of the instructions
-
-    startGuessing();
-}
-
-// after startBtn is clicked
-function startGuessing() {
-
-    document.getElementById("startBtn").style.display = "none"; // here we are hiding the startBtn
-
-    document.getElementById("quizHead").style.display = "none"; // hide code quiz heading
-
-    document.getElementById("quiz-questions").style.display = "block"; //display quiz
-
-    question();
+// run the quiz array of objets
+function startQuiz() {
+    upNextQuestion();
 }
 
 // display the content from the array to the corresponding HTML elements
-function question() {
-    quizQ.textContent = questions[0].q;
-    opt1.textContent = questions[0].a[0];
-    opt2.textContent = questions[0].a[1];
-    opt3.textContent = questions[0].a[2];
-    opt4.textContent = questions[0].a[3];
+function upNextQuestion() {
+    quizQ.textContent = questions[testQuestions].q;
+    option1.textContent = questions[testQuestions].a[0];
+    option2.textContent = questions[testQuestions].a[1];
+    option3.textContent = questions[testQuestions].a[2];
+    option4.textContent = questions[testQuestions].a[3];
+}
 
+// alerting if answer is right or wrong
+function checkIfRight(correct) {
+    if (questions[testQuestions].correct === questions[testQuestions].a[correct]) {
+        score++;
+        alert("Correct");
+    } else {
+        timeLeft -= 15;
+        alert("Incorrect");
+    }
 
-    // search up array object iterator..
-    for (var i = 0; i < questions.length; i++) {
-        var obj = questions[i];
-        //     highScore();
+    // cycling through questions
+    testQuestions++;
+    if (testQuestions < questions.length) {
+        upNextQuestion();
+    } else {
+        gameOver();
     }
 }
 
-// function highScore() {
-//     prompt("Enter your name?");
-//     localStorage.setItem(prompt);
-// if (timeLeft <= 0 || questions.length <= 0) {
-//     timerEl.textContent = "Game Score";
-// }
-// }
+//checking options 
+function opt1() { checkIfRight(0); }
+function opt2() { checkIfRight(1); }
+function opt3() { checkIfRight(2); }
+function opt4() { checkIfRight(3); }
 
 
-// create array that contains questions and answer, do it questions functions
-// create a for loop 
-// create an if/else statement. if it isn't answer then "wrong answer" & timeLeft - 5, else "correct answer" message and give them 5 points
+// once game has ended it will hide/display HTML elements
+function gameOver() {
+    quizStart.style.display = "none"; // hiding questions
+    results.style.display = "block"; // showing results
+    timerEl.style.display = "none"; //hiding timer
+    highScore.style.display = "block"; // displaying leaderboard
+}
 
+
+// storing score
+function getHighScore() {
+    var userName = localStorage.getItem("#initials");
+    var userScoreNow = score;
+
+    userHighName.textContent = userName;
+    userHighScore.textContent = userScoreNow;
+}
+
+getHighScore();
+
+scoreSubmitBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var nameUser = document.getElementById('initials').value;
+    var scoreS = score;
+
+    localStorage.setItem('name', nameUser);
+    localStorage.setItem('score', score);
+
+    getHighScore();
+});
+
+
+// event listeners
 startBtn.onclick = countdown;
+option1.addEventListener("click", opt1);
+option2.addEventListener("click", opt2);
+option3.addEventListener("click", opt3);
+option4.addEventListener("click", opt4);
